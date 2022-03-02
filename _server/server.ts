@@ -1,13 +1,26 @@
 import express, { Request, Response } from 'express';
+import cors from 'cors';
 
 const app = express();
+app.use(cors({
+    origin: 'http://localhost:3000',
+}))
+
+const devices = [
+    {
+        id: 1,
+    },
+    {
+        id: 2,
+    }
+]
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Server is alive!');
 })
 
 app.get('/api/v1/devices', (req: Request, res: Response) => {
-    res.send('/api/v1/devices')
+    res.send(devices)
 })
 
 app.get('/api/v1/devices/:id', (req: Request, res: Response) => {
