@@ -1,7 +1,9 @@
 import BoxIcon from "../box-icon";
 import { yellow, red, green } from '@mui/material/colors';
-import CircleIcon from '@mui/icons-material/Circle';
 import Tooltip from '@mui/material/Tooltip';
+import SignalWifi4BarIcon from '@mui/icons-material/SignalWifi4Bar';
+import SignalWifi2BarIcon from '@mui/icons-material/SignalWifi2Bar';
+import SignalWifi0BarIcon from '@mui/icons-material/SignalWifi0Bar';
 
 const BoxConnectionState = ({ connectionState }: { connectionState: string }) => {
     return (
@@ -10,17 +12,17 @@ const BoxConnectionState = ({ connectionState }: { connectionState: string }) =>
                 connectionState === 'connected'
                     ?
                     <Tooltip title="Connected">
-                        <CircleIcon sx={{ color: green[500] }} fontSize="small" />
+                        <SignalWifi4BarIcon sx={{ color: green[500] }} fontSize="small" />
                     </Tooltip>
                     :
                     connectionState === 'poorConnection'
                         ?
                         <Tooltip title="Poor connection">
-                            <CircleIcon sx={{ color: yellow[500] }} fontSize="small" />
+                            <SignalWifi2BarIcon sx={{ color: yellow[500] }} fontSize="small" />
                         </Tooltip>
-                        : // if not connected or null -> disconnected
+                        :
                         <Tooltip title="Disconnected">
-                            <CircleIcon sx={{ color: red[500] }} fontSize="small" />
+                            <SignalWifi0BarIcon sx={{ color: red[500] }} fontSize="small" />
                         </Tooltip>
             }
         </BoxIcon>

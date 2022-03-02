@@ -94,7 +94,7 @@ const BaseNavbar = ({ children, theme, open, setOpen, selectedIndex, setSelected
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar position="fixed" open={open}>
-                <Toolbar>
+                <Toolbar sx={{ background: '#2f3b52' }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"

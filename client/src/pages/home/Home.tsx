@@ -16,7 +16,6 @@ const Grid = styled.div`
 `
 
 const BaseHome = ({ devices }: { devices: Array<SmartDeviceAny> }) => {
-    console.log(devices)
     return (
         <Grid>
             {

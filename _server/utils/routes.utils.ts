@@ -1,5 +1,5 @@
 import { Express, Request, Response } from 'express'
-import { devices } from './db.utils';
+import { getAll } from './db.utils';
 
 const routes = (app: Express) => {
     app.get('/', (req: Request, res: Response) => {
@@ -7,7 +7,7 @@ const routes = (app: Express) => {
     })
 
     app.get('/api/v1/devices', (req: Request, res: Response) => {
-        res.send(devices)
+        res.send(getAll())
     })
 
     app.get('/api/v1/devices/:id', (req: Request, res: Response) => {

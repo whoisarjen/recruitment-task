@@ -1,16 +1,37 @@
+const generateColor = () => {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16)
+}
+
 export const devices = [
     {
         type: 'bulb',
         id: '1',
         name: 'Bulb 10000',
-        connectionState: 'poorConnection', // 'connected', 'disconnected' or 'poorConnection'
+        connectionState: 'connected', // 'connected', 'disconnected' or 'poorConnection'
         isTurnedOn: true,
         brightness: 80, // <0, 100>
-        color: 'red', // in the CSS formats
+        color: generateColor(), // in the CSS formats
+    },
+    {
+        type: 'bulb',
+        id: '1b',
+        name: 'Bulb 10000',
+        connectionState: 'poorConnection', // 'connected', 'disconnected' or 'poorConnection'
+        isTurnedOn: false,
+        brightness: 50, // <0, 100>
+        color: generateColor(), // in the CSS formats
     },
     {
         type: 'outlet',
         id: '2',
+        name: 'Outlet 10000',
+        connectionState: 'disconnected', // 'connected', 'disconnected' or 'poorConnection'
+        isTurnedOn: true,
+        powerConsumption: 50, // in watts
+    },
+    {
+        type: 'outlet',
+        id: '2b',
         name: 'Outlet 10000',
         connectionState: 'disconnected', // 'connected', 'disconnected' or 'poorConnection'
         isTurnedOn: false,
@@ -24,9 +45,18 @@ export const devices = [
         temperature: 100, // in Celsius
     },
     {
-        type: 'unknown',
+        // type: 'unknown',
         id: '4',
-        name: 'Type is unknown',
-        connectionState: 'poorConnection',
+        name: 'This one shows what happen, when back-end failed',
+        // connectionState: 'poorConnection',
     }
 ]
+
+export const getAll = () => {
+    return devices.map(device => {
+        if(device.color){
+            device.color = generateColor()
+        }
+        return device;
+    })
+}
