@@ -1,3 +1,9 @@
 Overflow shouldnt show when we open menu in mobile mode (device's boxes)
 
 schemantic
+
+check the css on mobile properly
+
+socket on server site
+
+box-device props etc.

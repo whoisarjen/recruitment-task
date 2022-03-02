@@ -1,36 +1,17 @@
-import express, { Request, Response } from 'express';
+import dotenv from 'dotenv'
+dotenv.config({ path: `.env` })
 import cors from 'cors';
+import { Server } from 'socket.io';
+import express from 'express';
+import { socket } from './utils/socket.utils';
+import routes from './utils/routes.utils';
 
 const app = express();
-app.use(cors({
-    origin: 'http://localhost:3000',
-}))
+app.use(cors({ origin: process.env.ORIGIN }))
 
-const devices = [
-    {
-        id: 1,
-    },
-    {
-        id: 2,
-    }
-]
+const server = app.listen(1337, () => console.log(`Listening on port ${1337} (http://localhost:${1337})`));
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Server is alive!');
-})
+const io = new Server(server, { cors: { origin: process.env.ORIGIN } });
 
-app.get('/api/v1/devices', (req: Request, res: Response) => {
-    res.send(devices)
-})
-
-app.get('/api/v1/devices/:id', (req: Request, res: Response) => {
-    res.send(`/api/v1/devices/${req.params.id}`)
-})
-
-app.get('/api/v1/refresh', (req: Request, res: Response) => {
-    res.send('/api/v1/refresh')
-})
-
-app.listen(1337, () => {
-    console.log('Server is listening on port 1337!');
-})
+routes(app);
+socket({ io });

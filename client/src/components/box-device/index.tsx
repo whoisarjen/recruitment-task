@@ -1,16 +1,13 @@
-import { SmartDeviceDetails } from "../../interfaces/api.interfaces";
 import styled from 'styled-components';
-import OutletIcon from '@mui/icons-material/Outlet';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import DeviceUnknownIcon from '@mui/icons-material/DeviceUnknown';
-import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
-import CircleIcon from '@mui/icons-material/Circle';
+import BoxConnectionState from '../box-connection-state';
+import BoxIcon from '../box-icon';
+import IconDevice from '../icon-device';
 
-const icon = {
-    outlet: <OutletIcon />,
-    bulb: <LightbulbIcon />,
-    temperatureSensor: <DeviceThermostatIcon />,
-    unknown: <DeviceUnknownIcon />,
+interface BoxDeviceProps {
+    children: any
+    type: string
+    name: string
+    connectionState: string
 }
 
 const Box = styled.div`
@@ -28,34 +25,23 @@ const Box = styled.div`
     }
 `
 
-const Icon = styled.div`
-    width: 44px;
-    height: 44px;
-    margin: auto;
-    display: grid;
-    ${this} svg{
-        margin: auto;
-    }
-`
-
 const Text = styled.div`
     width: 100%;
     margin: auto 0;
     padding: 10px 20px;
 `
 
-const BoxDevice = ({ device }: { device: SmartDeviceDetails }) => {
+const BoxDevice = ({ children, type, name, connectionState }: BoxDeviceProps) => {
     return (
         <Box>
-            <Icon>
-                {icon[device.type as keyof typeof icon] ? icon[device.type as keyof typeof icon] : icon['unknown']}
-            </Icon>
+            <BoxIcon>
+                <IconDevice {...{ type }} />
+            </BoxIcon>
             <Text>
-                {device.name ? device.name : 'Unknown'}
+                {name}
             </Text>
-            <Icon>
-                <CircleIcon color={device.isTurnedOn ? "success" : "error"} fontSize="small" />
-            </Icon>
+            <BoxConnectionState connectionState={connectionState} />
+            {children}
         </Box>
     )
 }
