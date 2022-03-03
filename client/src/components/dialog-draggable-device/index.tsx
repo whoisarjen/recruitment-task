@@ -69,7 +69,7 @@ const DialogDraggableDevice = () => {
                         {
                             dialog && Object.keys(dialog).map((key: any) =>
                                 <DialogContentText key={key}>
-                                    {key}: {dialog[key as keyof SmartDeviceAny]}
+                                    {key}: {dialog[key as keyof SmartDeviceAny].toString()}
                                 </DialogContentText>
                             )
                         }

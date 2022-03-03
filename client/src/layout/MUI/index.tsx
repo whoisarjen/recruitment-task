@@ -3,6 +3,11 @@ import { createTheme, ThemeProvider as ThemeProviderMUI } from "@mui/material/st
 const MUI = ({ children }: { children: any }) => {
 
     const theme = createTheme({
+        palette: {
+            primary: {
+                main: '#2f3b52',
+            },
+        },
         typography: {
             fontFamily: "Quicksand, sans-serif",
         },
