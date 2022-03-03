@@ -6,6 +6,7 @@ import Navbar from './layout/navbar'
 import Footer from './layout/footer';
 import Socket from './layout/socket';
 import MUI from './layout/MUI';
+import DialogDraggable from './components/dialog-draggable';
 
 render(
     <Socket>
@@ -17,6 +18,7 @@ render(
                     </Routes>
                 </BrowserRouter>
                 <Footer />
+                <DialogDraggable />
             </Navbar>
         </MUI>
     </Socket>,
