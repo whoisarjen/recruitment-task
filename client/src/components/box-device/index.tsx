@@ -15,12 +15,12 @@ const Box = styled.div`
     }
 `
 
-const BoxDeviceLayout = ({ children }: { children: any }) => {
+const BoxDevice = ({ children, onClick }: { children: any, onClick: () => void }) => {
     return (
-        <Box>
+        <Box onClick={onClick}>
             {children}
         </Box >
     )
 }
 
-export default BoxDeviceLayout;
+export default BoxDevice;

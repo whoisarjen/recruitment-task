@@ -16,7 +16,7 @@ const Box = styled.div`
     transform: translate(-50%,-50%);
     width: ${width}px;
     max-width: 90%;
-    height: ${height}px;
+    min-height: ${height}px;
     background: #fff;
     border-radius: 8px;
     padding: 10px;
@@ -32,9 +32,11 @@ const DialogDraggableDevice = () => {
         const element: any = document.querySelector('#dialog')
 
         element.style.left = `calc(50% - ${element.offsetWidth / 2}px)`
+        element.style.top = `calc(50% - ${element.offsetHeight / 2}px)`
 
         window.addEventListener('resize', () => {
             element.style.left = `calc(50% - ${element.offsetWidth / 2}px)`
+            element.style.top = `calc(50% - ${element.offsetHeight / 2}px)`
         })
 
         return;
@@ -56,10 +58,14 @@ const DialogDraggableDevice = () => {
                 {
                     dialog &&
                     (
-                        dialog.name
+                        Object.keys(dialog).map((key: any) =>
+                            <div key={key}>
+                                {key}: {dialog[key as keyof SmartDeviceAny]}
+                            </div>
+                        )
                     )
                 }
-                <div>I can now be moved around!<button onClick={() => dispatch(closeDialog())}>Close</button></div>
+                <div><button onClick={() => dispatch(closeDialog())}>Close</button></div>
             </Box>
         </Draggable>
     )
