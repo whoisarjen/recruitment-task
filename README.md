@@ -1,9 +1,9 @@
 asdasdas
 
-# Starting project
+## Starting project
 
 Inside "_server" we need to install all dependencies
 
-## npm i
+### npm i
 
-## npm run start
+### npm run start
