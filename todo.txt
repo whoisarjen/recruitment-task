@@ -7,3 +7,5 @@ check the css on mobile properly
 socket on server site
 
 box-device props etc.
+
+footer
