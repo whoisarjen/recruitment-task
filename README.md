@@ -2,7 +2,7 @@ asdasdas
 
 ## Starting project
 
-To run the project we have to get care of server and client site.
+To run the project we have to get care of server's and client's site.
 
 Inside "_server" we need to install all dependencies:
 
@@ -22,7 +22,7 @@ Now we can move to "client" folder and basiclly do the same:
 $ npm install
 ```
 
-then we can run server:
+Client's site should be ready to start:
 
 ```bash
 $ npm run start
