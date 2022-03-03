@@ -2,8 +2,14 @@ asdasdas
 
 ## Starting project
 
-Inside "_server" we need to install all dependencies
+Inside "_server" we need to install all dependencies:
 
-### npm i
+```bash
+$ npm install
+```
 
-### npm run start
+then we can run server:
+
+```bash
+$ npm run start
+```
