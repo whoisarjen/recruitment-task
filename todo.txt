@@ -7,3 +7,5 @@ socket on server site
 footer
 
 kick out loading data on diff layout + values from redux
+
+on dialog open => if out of window => center

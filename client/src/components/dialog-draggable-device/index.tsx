@@ -4,6 +4,12 @@ import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
 import { SmartDeviceAny } from '../../interfaces/device.interface';
 import { closeDialog } from '../../redux/slices/device.slice';
+import Fade from '@mui/material/Fade';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 
 const width = 350;
 const height = 200;
@@ -53,21 +59,27 @@ const DialogDraggableDevice = () => {
     }, [dialog])
 
     return (
-        <Draggable>
-            <Box id="dialog">
-                {
-                    dialog &&
-                    (
-                        Object.keys(dialog).map((key: any) =>
-                            <div key={key}>
-                                {key}: {dialog[key as keyof SmartDeviceAny]}
-                            </div>
-                        )
-                    )
-                }
-                <div><button onClick={() => dispatch(closeDialog())}>Close</button></div>
-            </Box>
-        </Draggable>
+        <Draggable cancel="#button_close">
+            <Fade in={dialog ? true : false}>
+                <Box id="dialog">
+                    <DialogTitle id="dialog-title">
+                        {dialog && dialog.name}
+                    </DialogTitle>
+                    <DialogContent>
+                        {
+                            dialog && Object.keys(dialog).map((key: any) =>
+                                <DialogContentText key={key}>
+                                    {key}: {dialog[key as keyof SmartDeviceAny]}
+                                </DialogContentText>
+                            )
+                        }
+                    </DialogContent>
+                    <DialogActions>
+                        <Button id="button_close" onClick={() => dispatch(closeDialog())}>Close</Button>
+                    </DialogActions>
+                </Box>
+            </Fade>
+        </Draggable >
     )
 }
 
