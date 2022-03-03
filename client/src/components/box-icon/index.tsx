@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Icon = styled.div`
+const Box = styled.div`
     width: 44px;
     height: 44px;
     margin: auto;
@@ -12,9 +12,9 @@ const Icon = styled.div`
 
 const BoxIcon = ({ children }: { children: any }) => {
     return (
-        <Icon>
+        <Box>
             {children}
-        </Icon>
+        </Box>
     )
 }
 

@@ -1,7 +1,7 @@
 import OutletIcon from '@mui/icons-material/Outlet';
 import OutletOutlinedIcon from '@mui/icons-material/OutletOutlined';
 
-const IconDeviceOutlet = ({ isTurnedOn }: { isTurnedOn: boolean }) => {
+const IconOutlet = ({ isTurnedOn }: { isTurnedOn: boolean }) => {
     return (
         <>
             {
@@ -15,4 +15,4 @@ const IconDeviceOutlet = ({ isTurnedOn }: { isTurnedOn: boolean }) => {
     )
 }
 
-export default IconDeviceOutlet;
+export default IconOutlet;

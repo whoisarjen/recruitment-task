@@ -5,7 +5,7 @@ import SignalWifi4BarIcon from '@mui/icons-material/SignalWifi4Bar';
 import SignalWifi2BarIcon from '@mui/icons-material/SignalWifi2Bar';
 import SignalWifi0BarIcon from '@mui/icons-material/SignalWifi0Bar';
 
-const BoxConnectionState = ({ connectionState }: { connectionState: string }) => {
+const BoxIconConnectionState = ({ connectionState }: { connectionState: string }) => {
     return (
         <BoxIcon>
             {
@@ -29,4 +29,4 @@ const BoxConnectionState = ({ connectionState }: { connectionState: string }) =>
     )
 }
 
-export default BoxConnectionState;
+export default BoxIconConnectionState;

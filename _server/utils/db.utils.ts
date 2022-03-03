@@ -14,7 +14,7 @@ export const devices = [
     },
     {
         type: 'bulb',
-        id: '1b',
+        id: '2',
         name: 'Bulb 10000',
         connectionState: 'poorConnection', // 'connected', 'disconnected' or 'poorConnection'
         isTurnedOn: false,
@@ -23,7 +23,7 @@ export const devices = [
     },
     {
         type: 'outlet',
-        id: '2',
+        id: '3',
         name: 'Outlet 10000',
         connectionState: 'disconnected', // 'connected', 'disconnected' or 'poorConnection'
         isTurnedOn: true,
@@ -31,7 +31,7 @@ export const devices = [
     },
     {
         type: 'outlet',
-        id: '2b',
+        id: '4',
         name: 'Outlet 10000',
         connectionState: 'disconnected', // 'connected', 'disconnected' or 'poorConnection'
         isTurnedOn: false,
@@ -39,15 +39,15 @@ export const devices = [
     },
     {
         type: 'temperatureSensor',
-        id: '3',
+        id: '5',
         name: 'TemperatureSensor 10000',
         connectionState: 'connected', // 'connected', 'disconnected' or 'poorConnection'
         temperature: 100, // in Celsius
     },
     {
         // type: 'unknown',
-        id: '4',
-        name: 'This one shows what happen, when back-end failed',
+        id: '6',
+        name: 'This one shows what happens, when the back-end fails',
         // connectionState: 'poorConnection',
     }
 ]

@@ -1,7 +1,7 @@
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 
-const IconDeviceBulb = ({ isTurnedOn, color }: { isTurnedOn: boolean, color: string }) => {
+const IconBulb = ({ isTurnedOn, color }: { isTurnedOn: boolean, color: string }) => {
     return (
         <>
             {
@@ -15,4 +15,4 @@ const IconDeviceBulb = ({ isTurnedOn, color }: { isTurnedOn: boolean, color: str
     )
 }
 
-export default IconDeviceBulb;
+export default IconBulb;
