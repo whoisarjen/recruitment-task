@@ -126,15 +126,6 @@ const BaseNavbar = ({ children, theme, open, setOpen, selectedIndex, setSelected
                         <ListItemText primary={"Devices"} />
                     </ListItem>
                 </List>
-                <Divider />
-                <List>
-                    <ListItem button key={"Devices"}>
-                        <ListItemIcon>
-                            <DevicesIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"Devices"} />
-                    </ListItem>
-                </List>
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />

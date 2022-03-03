@@ -26,6 +26,24 @@ const generateRandomString = (length: number) => {
     return result
 }
 
+const generateRandom = (min = 0, max = 100) => {
+    let difference = max - min;
+
+    let rand = Math.random();
+
+    rand = Math.floor(rand * difference);
+
+    rand = rand + min;
+
+    return rand;
+}
+
+const randomlyChooseRange = () => {
+    const options = ['connected', 'disconnected', 'poorConnection']
+
+    return options[generateRandom(0, 3)]
+}
+
 
 const changeDevice = () => {
     const devices = getAll()
@@ -35,5 +53,5 @@ const changeDevice = () => {
         device = devices[Math.floor(Math.random() * devices.length)];
     }
 
-    return { ...device, name: generateRandomString(10) };
+    return { ...device, name: generateRandomString(10), connectionState: randomlyChooseRange(), isTurnedOn: Math.round(Math.random()) };
 }
