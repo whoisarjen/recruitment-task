@@ -1,10 +1,10 @@
-The goal of the project is to create
+The goal of the project is to create part of smart home web's interface. I need to get list of smart devices from DB, show it and then listen for commming changes from socket.
 
 ## How does it work?
 
 asd
 
-## What I would do in real product?
+## What would I do extra in real product?
 
 asd
 
