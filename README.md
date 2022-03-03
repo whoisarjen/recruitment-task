@@ -1,4 +1,12 @@
-asdasdas
+The goal of the project is to create
+
+## How does it work?
+
+asd
+
+## What I would do in real product?
+
+asd
 
 ## Starting project
 
