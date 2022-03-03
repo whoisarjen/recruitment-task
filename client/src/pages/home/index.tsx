@@ -1,8 +1,8 @@
-import useDevices from "../../hooks/useDevices";
+import { useAppSelector } from "../../hooks/useRedux";
 import BaseHome from "./Home";
 
 function Home() {
-    const { devices } = useDevices()
+    const devices = useAppSelector(state => state.device.all)
 
     return <BaseHome {...{ devices }} />;
 }

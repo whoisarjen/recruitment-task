@@ -1,11 +1,19 @@
-import useSocket from "./useSocket";
+import { useEffect } from "react";
+import io from "socket.io-client";
+import { useAppDispatch } from "../../hooks/useRedux";
+import { changeOne } from "../../redux/slices/device.slice";
 
-export interface SocketProps {
-    children: any
-}
+const Socket = ({ children }: { children: any }) => {
+    const dispatch = useAppDispatch()
 
-const Socket = ({ children }: SocketProps) => {
-    useSocket()
+    useEffect(() => {
+        const socket = io(process.env.REACT_APP_SERVER_URL as string, { path: `/api/v1/refresh`, withCredentials: true })
+
+        socket.on('SmartDeviceDetails', (message) => {
+            console.log('SmartDeviceDetails', message)
+            dispatch(changeOne(message))
+        })
+    }, [])
 
     return <>{children}</>
 }
