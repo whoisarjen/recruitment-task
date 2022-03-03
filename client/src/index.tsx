@@ -3,7 +3,6 @@ import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './pages/home';
 import Navbar from './layout/navbar'
-import Footer from './layout/footer';
 import MUI from './layout/MUI';
 import DialogDraggableDevice from './components/dialog-draggable-device';
 import { store } from './redux/store';
@@ -22,7 +21,6 @@ render(
                                 <Route path="/" element={<Home />} />
                             </Routes>
                         </BrowserRouter>
-                        <Footer />
                         <DialogDraggableDevice />
                     </Navbar>
                 </MUI>
