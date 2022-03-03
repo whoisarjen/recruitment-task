@@ -5,15 +5,17 @@ import BoxDevice from '../box-device--layout';
 import BoxIcon from '../box-icon';
 import IconDeviceUnknown from '../icon-device-unknown';
 
-const BoxDeviceUnknown = ({ name, connectionState, type }: SmartDevice) => {
+const BoxDeviceUnknown = ({ name, connectionState, type, onClick }: SmartDevice & { onClick: () => void }) => {
     return (
-        <BoxDevice>
-            <BoxIcon>
-                <IconDeviceUnknown />
-            </BoxIcon>
-            <BoxDeviceContent {...{ name, type }} />
-            <BoxConnectionState connectionState={connectionState} />
-        </BoxDevice>
+        <div onClick={onClick}>
+            <BoxDevice>
+                <BoxIcon>
+                    <IconDeviceUnknown />
+                </BoxIcon>
+                <BoxDeviceContent {...{ name, type }} />
+                <BoxConnectionState connectionState={connectionState} />
+            </BoxDevice>
+        </div>
     )
 }
 

@@ -9,3 +9,5 @@ socket on server site
 box-device props etc.
 
 footer
+
+redux to handle dialog value change => if false = display: none;

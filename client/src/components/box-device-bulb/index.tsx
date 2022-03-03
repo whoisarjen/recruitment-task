@@ -5,15 +5,17 @@ import BoxIcon from '../box-icon';
 import IconDeviceBulb from '../icon-device-bulb';
 import BoxDeviceContent from '../box-device--content';
 
-const BoxDeviceBulb = ({ type, id, name, connectionState, isTurnedOn, brightness, color }: SmartBulb) => {
+const BoxDeviceBulb = ({ type, id, name, connectionState, isTurnedOn, brightness, color, onClick }: SmartBulb & { onClick: () => void }) => {
     return (
-        <BoxDevice>
-            <BoxIcon>
-                <IconDeviceBulb {...{ isTurnedOn, color }} />
-            </BoxIcon>
-            <BoxDeviceContent {...{ name, type }} />
-            <BoxConnectionState connectionState={connectionState} />
-        </BoxDevice>
+        <div onClick={onClick}>
+            <BoxDevice>
+                <BoxIcon>
+                    <IconDeviceBulb {...{ isTurnedOn, color }} />
+                </BoxIcon>
+                <BoxDeviceContent {...{ name, type }} />
+                <BoxConnectionState connectionState={connectionState} />
+            </BoxDevice>
+        </div>
     )
 }
 

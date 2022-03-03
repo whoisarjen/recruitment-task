@@ -5,15 +5,17 @@ import BoxDevice from '../box-device--layout';
 import BoxIcon from '../box-icon';
 import IconDeviceOutlet from '../icon-device-outlet';
 
-const BoxDeviceOutlet = ({ type, id, name, connectionState, isTurnedOn, powerConsumption }: SmartOutlet) => {
+const BoxDeviceOutlet = ({ type, id, name, connectionState, isTurnedOn, powerConsumption, onClick }: SmartOutlet & { onClick: () => void }) => {
     return (
-        <BoxDevice>
-            <BoxIcon>
-                <IconDeviceOutlet {...{ isTurnedOn }} />
-            </BoxIcon>
-            <BoxDeviceContent {...{ name, type }} />
-            <BoxConnectionState connectionState={connectionState} />
-        </BoxDevice>
+        <div onClick={onClick}>
+            <BoxDevice>
+                <BoxIcon>
+                    <IconDeviceOutlet {...{ isTurnedOn }} />
+                </BoxIcon>
+                <BoxDeviceContent {...{ name, type }} />
+                <BoxConnectionState connectionState={connectionState} />
+            </BoxDevice>
+        </div>
     )
 }
 
