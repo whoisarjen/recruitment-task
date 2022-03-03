@@ -1,13 +1,9 @@
-Overflow shouldnt show when we open menu in mobile mode (device's boxes)
-
 schemantic
 
 check the css on mobile properly
 
 socket on server site
 
-box-device props etc.
-
 footer
 
-redux to handle dialog value change => if false = display: none;
+kick out loading data on diff layout + values from redux
