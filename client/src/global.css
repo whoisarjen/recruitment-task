@@ -45,4 +45,10 @@ body{
     margin: 0;
     font-family: "Quicksand", sans-serif;
     overflow-x: hidden;
+    width: 100%;
+}
+
+.css-zxdg2z{
+    /* padding: 22px !important; */
+    width: calc(100% - 48px) !important;
 }
