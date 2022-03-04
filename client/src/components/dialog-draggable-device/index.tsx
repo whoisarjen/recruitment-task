@@ -46,7 +46,7 @@ const DialogDraggableDevice = () => {
     }, [])
 
     useEffect(() => {
-        const dialogRealHeight: any = document.getElementById('dialogRealHeight')
+        const dialogReal: any = document.getElementById('dialogReal')
         const element: any = document.querySelector('#dialog')
 
         if (dialog) {
@@ -55,13 +55,13 @@ const DialogDraggableDevice = () => {
             element.style.display = `none`
         }
 
-        if (element.offsetHeight < dialogRealHeight.offsetHeight + 20) {
-            element.style.height = dialogRealHeight.offsetHeight + 20 + 'px';
+        if (element.offsetHeight < dialogReal.offsetHeight + 20) {
+            element.style.height = dialogReal.offsetHeight + 20 + 'px';
         }
     }, [dialog])
 
     useEffect(() => {
-        const dialogRealHeight: any = document.getElementById('dialogRealHeight')
+        const dialogReal: any = document.getElementById('dialogReal')
         const element: any = document.getElementById('dialog');
         const resizer: any = document.createElement('div');
 
@@ -85,11 +85,15 @@ const DialogDraggableDevice = () => {
             let { value: y } = (document.getElementById('dialog') as any).computedStyleMap().get('transform')[0].y;
             let { value: x } = (document.getElementById('dialog') as any).computedStyleMap().get('transform')[0].x;
 
-            element.style.width = (e.clientX - element.offsetLeft - x) + 'px';
-            if (dialogRealHeight.offsetHeight + 20 <= (e.clientY - element.offsetTop - y)) {
+            if ((e.clientX - element.offsetLeft - x) >= 200) {
+                element.style.width = (e.clientX - element.offsetLeft - x) + 'px';
+            }
+
+
+            if (dialogReal.offsetHeight + 20 <= (e.clientY - element.offsetTop - y)) {
                 element.style.height = (e.clientY - element.offsetTop - y) + 'px';
-            }else{
-                element.style.height = dialogRealHeight.offsetHeight + 20 + 'px';
+            } else {
+                element.style.height = dialogReal.offsetHeight + 20 + 'px';
             }
         }
 
@@ -105,7 +109,7 @@ const DialogDraggableDevice = () => {
         <Draggable cancel="#button_close, .resizer">
             <Fade in={dialog ? true : false}>
                 <Box id="dialog">
-                    <div id="dialogRealHeight">
+                    <div id="dialogReal">
                         <DialogTitle id="dialog-title">
                             {dialog && dialog.name}
                         </DialogTitle>
