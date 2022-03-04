@@ -59,6 +59,10 @@ const DialogDraggableDevice = () => {
         if (element.offsetHeight < dialogReal.offsetHeight + 20) {
             element.style.height = dialogReal.offsetHeight + 20 + 'px';
         }
+
+        // it has to be after display change (center dialog when max-width plays first role)
+        element.style.left = `calc(50% - ${element.offsetWidth / 2}px)`
+        element.style.top = `calc(50% - ${element.offsetHeight / 2}px)`
     }, [dialog])
 
     useEffect(() => {
