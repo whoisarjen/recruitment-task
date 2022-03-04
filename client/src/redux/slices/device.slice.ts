@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SmartDeviceAny } from "../../interfaces/device.interface";
+import { SmartDeviceDetails } from "../../interfaces/device.interface";
 
 interface InitialStateProps {
-    dialog: false | SmartDeviceAny
-    all: Array<SmartDeviceAny>
+    dialog: false | SmartDeviceDetails
+    all: Array<SmartDeviceDetails>
 }
 
 const initialState: InitialStateProps = {
@@ -26,7 +26,7 @@ export const deviceSlice = createSlice({
         },
         changeOne: (state: any, action: any) => {
             let isExisting = false;
-            state.all = state.all.map((device: SmartDeviceAny) => {
+            state.all = state.all.map((device: SmartDeviceDetails) => {
                 if (device.id === action.payload.id) {
                     isExisting = true;
                     return action.payload

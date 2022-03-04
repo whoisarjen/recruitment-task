@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useAppDispatch } from '../../hooks/useRedux';
-import { SmartDeviceAny } from '../../interfaces/device.interface';
+import { SmartDeviceDetails } from '../../interfaces/device.interface';
 import { openDialog } from '../../redux/slices/device.slice';
 import BoxIconConnectionState from '../box-icon-connection-state';
 import BoxIconDevice from '../box-icon-device';
@@ -27,7 +27,7 @@ const Content = styled.div`
     padding: 10px;
 `
 
-const BoxDevice = ({ device }: { device: SmartDeviceAny }) => {
+const BoxDevice = ({ device }: { device: SmartDeviceDetails }) => {
     const dispatch = useAppDispatch()
     const { connectionState, type, name } = device;
 

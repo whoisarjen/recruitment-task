@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Draggable from 'react-draggable';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
-import { SmartDeviceAny } from '../../interfaces/device.interface';
+import { SmartDeviceDetails } from '../../interfaces/device.interface';
 import { closeDialog } from '../../redux/slices/device.slice';
 import Fade from '@mui/material/Fade';
 import DialogActions from '@mui/material/DialogActions';
@@ -70,7 +70,7 @@ const DialogDraggableDevice = () => {
                         {
                             dialog && Object.keys(dialog).map((key: any) =>
                                 <DialogContentText key={key}>
-                                    {key}: {dialog[key as keyof SmartDeviceAny].toString()}
+                                    {key}: {dialog[key as keyof SmartDeviceDetails].toString()}
                                 </DialogContentText>
                             )
                         }

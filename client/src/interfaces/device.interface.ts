@@ -39,4 +39,4 @@ export interface SmartUnknown {
     connectionState: string;
 }
 
-export type SmartDeviceAny = SmartBulb | SmartOutlet | SmartTemperatureSensor | SmartUnknown;
+export type SmartDeviceDetails = SmartBulb | SmartOutlet | SmartTemperatureSensor | SmartUnknown;

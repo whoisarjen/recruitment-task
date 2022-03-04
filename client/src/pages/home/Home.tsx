@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import BoxDevice from "../../components/box-device";
-import { SmartDeviceAny } from "../../interfaces/device.interface";
+import { SmartDeviceDetails } from "../../interfaces/device.interface";
 
 const Grid = styled.div`
     width: 100%;
@@ -12,12 +12,12 @@ const Grid = styled.div`
     }
 `
 
-const BaseHome = ({ devices }: { devices: Array<SmartDeviceAny> }) => {
+const BaseHome = ({ devices }: { devices: Array<SmartDeviceDetails> }) => {
     return (
         <Grid>
             {
                 devices.length > 0 &&
-                devices.map((device: SmartDeviceAny) =>
+                devices.map((device: SmartDeviceDetails) =>
                     <BoxDevice key={device.id} {...{ device }} />
                 )
             }
