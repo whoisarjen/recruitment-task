@@ -1,3 +1,5 @@
+![Layout of application](./layout.png)
+
 The goal of the project is to create part of smart home web's interface, which cover:
 
 - [x] Connect to DB and get all user's devices
