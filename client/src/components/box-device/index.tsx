@@ -30,7 +30,7 @@ const Content = styled.div`
 
 const BoxDevice = ({ device }: { device: SmartDeviceDetails }) => {
     const dispatch = useAppDispatch()
-    const { connectionState, type, name } = device;
+    const { type, name } = device;
 
     return (
         <Box onClick={() => dispatch(openDialog(device))}>
@@ -39,7 +39,7 @@ const BoxDevice = ({ device }: { device: SmartDeviceDetails }) => {
                 <div>{name}</div>
                 <small>{type}</small>
             </Content>
-            <BoxIconConnectionState connectionState={connectionState} />
+            <BoxIconConnectionState {...device} />
         </Box >
     )
 }
