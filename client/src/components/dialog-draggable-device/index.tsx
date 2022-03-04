@@ -37,9 +37,6 @@ const DialogDraggableDevice = () => {
     useEffect(() => {
         const element: any = document.querySelector('#dialog')
 
-        element.style.left = `calc(50% - ${element.offsetWidth / 2}px)`
-        element.style.top = `calc(50% - ${element.offsetHeight / 2}px)`
-
         window.addEventListener('resize', () => {
             element.style.left = `calc(50% - ${element.offsetWidth / 2}px)`
             element.style.top = `calc(50% - ${element.offsetHeight / 2}px)`
@@ -56,6 +53,10 @@ const DialogDraggableDevice = () => {
         } else {
             element.style.display = `none`
         }
+
+        // it has to be after display change
+        element.style.left = `calc(50% - ${element.offsetWidth / 2}px)`
+        element.style.top = `calc(50% - ${element.offsetHeight / 2}px)`
     }, [dialog])
 
     return (
