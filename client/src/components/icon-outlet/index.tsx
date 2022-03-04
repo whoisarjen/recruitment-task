@@ -1,7 +1,8 @@
 import OutletIcon from '@mui/icons-material/Outlet';
 import OutletOutlinedIcon from '@mui/icons-material/OutletOutlined';
+import { SmartOutlet } from '../../interfaces/device.interface';
 
-const IconOutlet = ({ isTurnedOn }: { isTurnedOn: boolean }) => {
+const IconOutlet = ({ isTurnedOn }: SmartOutlet) => {
     return (
         <>
             {
