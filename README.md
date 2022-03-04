@@ -3,12 +3,12 @@ The goal of the project is to create part of smart home web's interface, which c
 - [x] Connect to DB and get all user's devices
 - [x] Connect socket on specyfic path and wait for messages
 - [x] Show list of user's devices with basic information
-- [x] Click on device open dialog, which can be moved and resized. After closed hold the same position
+- [x] Dialog, which open, when user click on device. The box should be draggable and allow to resize (right bottom corner). After close holds the same position
 - [x] Dynamically update list with value from socket (and potencailly dialog)
 
 ## How does it work?
 
-After connection to site, application is downloading devices and holds it in global store. After achiving message from socket, it check redux to overwrite existing value or add it to array of devices. Dialog which is located higher in root observes special flag in global store, which can be equal to specyfic object (device) or false. If the value is there, dialog is opening and showing every property. To avoid changning position after close, the dialog only change his status and what's the most important, is not getting rerender.
+After connection to site, application is downloading devices and holds it in global store. After achiving message from socket, it checks Redux to overwrite existing value or add it to array of devices. Dialog which is located higher in root, observes special flag in global store, which can be equal to specyfic object (device) or false. If the value is there, dialog is opening and showing every property. To avoid changning position after close, the dialog only change his visibility (is not getting rerender).
 
 ## Starting project
 
