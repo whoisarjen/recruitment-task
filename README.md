@@ -1,8 +1,8 @@
-The goal of the project is to create part of smart home web's interface. I need to get list of smart devices from DB, show it and then listen for commming changes from socket.
+The goal of the project is to create part of smart home web's interface. I need to get list of smart devices from mocked DB, show it on desktop and then listen for commming changes from socket.
 
 ## How does it work?
 
-asd
+After connection to site, application is downloading devices and holds it in Redux. After achiving message from socket, it check redux to overwrite existing value or add it to array of devices. 
 
 ## What would I do extra in real product?
 
