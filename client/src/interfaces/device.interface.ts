@@ -32,11 +32,4 @@ export interface SmartTemperatureSensor {
     temperature: number; // in Celsius
 }
 
-export interface SmartUnknown {
-    type: 'unknown';
-    id: string;
-    name: string;
-    connectionState: string;
-}
-
-export type SmartDeviceDetails = SmartBulb | SmartOutlet | SmartTemperatureSensor | SmartUnknown;
+export type SmartDeviceDetails = SmartBulb | SmartOutlet | SmartTemperatureSensor;
