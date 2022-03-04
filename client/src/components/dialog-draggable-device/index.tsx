@@ -46,6 +46,7 @@ const DialogDraggableDevice = () => {
     }, [])
 
     useEffect(() => {
+        const dialogRealHeight: any = document.getElementById('dialogRealHeight')
         const element: any = document.querySelector('#dialog')
 
         if (dialog) {
@@ -54,30 +55,73 @@ const DialogDraggableDevice = () => {
             element.style.display = `none`
         }
 
-        // it has to be after display change
-        element.style.left = `calc(50% - ${element.offsetWidth / 2}px)`
-        element.style.top = `calc(50% - ${element.offsetHeight / 2}px)`
+        if (element.offsetHeight < dialogRealHeight.offsetHeight + 20) {
+            element.style.height = dialogRealHeight.offsetHeight + 20 + 'px';
+        }
     }, [dialog])
 
+    useEffect(() => {
+        const dialogRealHeight: any = document.getElementById('dialogRealHeight')
+        const element: any = document.getElementById('dialog');
+        const resizer: any = document.createElement('div');
+
+        resizer.className = 'resizer';
+        resizer.style.width = '10px';
+        resizer.style.height = '10px';
+        resizer.style.position = 'absolute';
+        resizer.style.right = 0;
+        resizer.style.bottom = 0;
+        resizer.style.cursor = 'se-resize';
+
+        element.appendChild(resizer);
+        resizer.addEventListener('mousedown', initResize, false);
+
+        function initResize(e: any) {
+            window.addEventListener('mousemove', Resize, false);
+            window.addEventListener('mouseup', stopResize, false);
+        }
+
+        function Resize(e: any) {
+            let { value: y } = (document.getElementById('dialog') as any).computedStyleMap().get('transform')[0].y;
+            let { value: x } = (document.getElementById('dialog') as any).computedStyleMap().get('transform')[0].x;
+
+            element.style.width = (e.clientX - element.offsetLeft - x) + 'px';
+            if (dialogRealHeight.offsetHeight + 20 <= (e.clientY - element.offsetTop - y)) {
+                element.style.height = (e.clientY - element.offsetTop - y) + 'px';
+            }else{
+                element.style.height = dialogRealHeight.offsetHeight + 20 + 'px';
+            }
+        }
+
+        function stopResize(e: any) {
+            window.removeEventListener('mousemove', Resize, false);
+            window.removeEventListener('mouseup', stopResize, false);
+        }
+
+        return;
+    }, [])
+
     return (
-        <Draggable cancel="#button_close">
+        <Draggable cancel="#button_close, .resizer">
             <Fade in={dialog ? true : false}>
                 <Box id="dialog">
-                    <DialogTitle id="dialog-title">
-                        {dialog && dialog.name}
-                    </DialogTitle>
-                    <DialogContent>
-                        {
-                            dialog && Object.keys(dialog).map((key: any) =>
-                                <DialogContentText key={key}>
-                                    {key}: {dialog[key as keyof SmartDeviceDetails].toString()}
-                                </DialogContentText>
-                            )
-                        }
-                    </DialogContent>
-                    <DialogActions>
-                        <Button id="button_close" onClick={() => dispatch(closeDialog())}>Close</Button>
-                    </DialogActions>
+                    <div id="dialogRealHeight">
+                        <DialogTitle id="dialog-title">
+                            {dialog && dialog.name}
+                        </DialogTitle>
+                        <DialogContent>
+                            {
+                                dialog && Object.keys(dialog).map((key: any) =>
+                                    <DialogContentText key={key}>
+                                        {key}: {dialog[key as keyof SmartDeviceDetails].toString()}
+                                    </DialogContentText>
+                                )
+                            }
+                        </DialogContent>
+                        <DialogActions>
+                            <Button id="button_close" onClick={() => dispatch(closeDialog())}>Close</Button>
+                        </DialogActions>
+                    </div>
                 </Box>
             </Fade>
         </Draggable >
