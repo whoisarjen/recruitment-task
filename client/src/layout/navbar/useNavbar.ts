@@ -8,9 +8,8 @@ const useNavbar = ({ children }: NavbarProps) => {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
     const { path } = usePath()
-    const [tab, setTab] = useState(path);
 
-    return { children, theme, open, setOpen, tab, setTab }
+    return { children, theme, open, setOpen, path }
 }
 
 export type useNavbarProps = ReturnType<typeof useNavbar>

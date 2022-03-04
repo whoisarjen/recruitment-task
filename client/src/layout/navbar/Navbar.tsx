@@ -88,7 +88,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-const BaseNavbar = ({ children, theme, open, setOpen, tab, setTab }: useNavbarProps) => {
+const BaseNavbar = ({ children, theme, open, setOpen, path }: useNavbarProps) => {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -119,7 +119,7 @@ const BaseNavbar = ({ children, theme, open, setOpen, tab, setTab }: useNavbarPr
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    <ListItem button key={"Devices"} selected={tab === '/'} onClick={() => setTab('/')}>
+                    <ListItem button key={"Devices"} selected={path === '/'}>
                         <ListItemIcon>
                             <DevicesIcon />
                         </ListItemIcon>
