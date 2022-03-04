@@ -4,8 +4,9 @@ import Tooltip from '@mui/material/Tooltip';
 import SignalWifi4BarIcon from '@mui/icons-material/SignalWifi4Bar';
 import SignalWifi2BarIcon from '@mui/icons-material/SignalWifi2Bar';
 import SignalWifi0BarIcon from '@mui/icons-material/SignalWifi0Bar';
+import { SmartDevice } from "../../interfaces/device.interface";
 
-const BoxIconConnectionState = ({ connectionState }: { connectionState: string }) => {
+const BoxIconConnectionState = ({ connectionState }: SmartDevice) => {
     return (
         <BoxIcon>
             {
