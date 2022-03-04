@@ -4,7 +4,7 @@ The goal of the project is to create part of smart home web's interface, which c
 
 - [x] Connect to DB and get all user's devices
 - [x] Connect socket on specyfic path and wait for messages
-- [x] Show list of user's devices with basic information
+- [x] Show list of user's devices with basic information (name, type, range)
 - [x] Dialog, which open, when user click on device. The box should be draggable and allow to resize (right bottom corner). After close holds the same position
 - [x] Dynamically update list with value from socket (and potencailly dialog)
 
