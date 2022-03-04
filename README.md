@@ -8,11 +8,7 @@ The goal of the project is to create part of smart home web's interface, which c
 
 ## How does it work?
 
-After connection to site, application is downloading devices and holds it in Redux. After achiving message from socket, it check redux to overwrite existing value or add it to array of devices. 
-
-## What would I do extra in real product?
-
-asd
+After connection to site, application is downloading devices and holds it in global store. After achiving message from socket, it check redux to overwrite existing value or add it to array of devices. Dialog which is located higher in root observes special flag in global store, which can be equal to specyfic object (device) or false. If the value is there, dialog is opening and showing every property. To avoid changning position after close, the dialog only change his status and what's the most important, is not getting rerender.
 
 ## Starting project
 
