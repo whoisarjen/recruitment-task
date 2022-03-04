@@ -1,4 +1,10 @@
-The goal of the project is to create part of smart home web's interface. I need to get list of smart devices from mocked DB, show it on desktop and then listen for commming changes from socket.
+The goal of the project is to create part of smart home web's interface, which cover:
+
+- [x] Connect to DB and get all user's devices
+- [x] Connect socket on specyfic path and wait for messages
+- [x] Show list of user's devices with basic information
+- [x] Click on device open dialog, which can be moved and resized. After closed hold the same position
+- [x] Dynamically update list with value from socket (and potencailly dialog)
 
 ## How does it work?
 
