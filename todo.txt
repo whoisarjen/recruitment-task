@@ -1,0 +1,13 @@
+● za dodanie opcji resizing dla okna dialogowego (ale nie moze byc overflow),
+● za ciekawy sposób wizualizacji listy urządzeń i szczegółów urządzenia,
+
+
+
+
+Aplikacja przy załadowaniu pobiera listę urządzeń do Reduxa (Vuex w Vue). Wybór takiego rozwiązania jest powiązany z późniejszym przejściem na optymalizację, którą omówiłem niżej, a w tworzonym projekcie nie wydaję się być błędem.
+
+Socket nasłuchuję wiadomości, a następnie na podstawie id zmienia lub dodaje otrzymaną wartość do Reduxa. Lista urządzeń obserwuję Reduxa, więc zmiana w nim = potencjalne ponowne wyrenderowanie wyświetlanych urządzeń. 
+
+W celu testowym, serwer co kilka sekund sam losowo zmienia wartość jednego z urządzeń i wysyła je do użytkownika (lista powinna cały czas się zmieniać oraz wyświetlać console.log potwierdzający otrzymaną wartość).
+
+Jeżeli chodzi o dialog, to jest on wyciągnięty na tyle wysoko, żeby nie był w pełni rerenderowany, dzięki czemu nie zmienia on swojej pozycji po zamknięciu. Oczywiście nie jest on w pełni „zamykany”, ale tylko ukrywany. Jego widoczność jest zależna od tego, czy redux ma ustawioną obserwowaną wartość na false lub obiekt (wartości urządzenia). Obiekt służy również do generowania jego tekstu.
