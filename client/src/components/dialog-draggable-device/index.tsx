@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Draggable from 'react-draggable';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
@@ -34,6 +34,7 @@ const Box = styled.div`
 const DialogDraggableDevice = () => {
     const dispatch = useAppDispatch()
     const dialog = useAppSelector(state => state.device.dialog)
+    const [isFirstFullLoad, setIsFirstFullLoad] = useState(true);
 
     useEffect(() => {
         const element: any = document.querySelector('#dialog')
@@ -61,8 +62,11 @@ const DialogDraggableDevice = () => {
         }
 
         // it has to be after display change (center dialog when max-width plays first role)
-        element.style.left = `calc(50% - ${element.offsetWidth / 2}px)`
-        element.style.top = `calc(50% - ${element.offsetHeight / 2}px)`
+        if (isFirstFullLoad && dialog) {
+            element.style.left = `calc(50% - ${element.offsetWidth / 2}px)`
+            element.style.top = `calc(50% - ${element.offsetHeight / 2}px)`
+            setIsFirstFullLoad(false);
+        }
     }, [dialog])
 
     useEffect(() => {
