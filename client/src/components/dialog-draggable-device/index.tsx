@@ -70,7 +70,7 @@ const DialogDraggableDevice = () => {
     }, [dialog])
 
     useEffect(() => {
-        const dialogReal: any = document.getElementById('dialogReal')
+        const dialogReal: any = document.getElementById('dialogReal');
         const element: any = document.getElementById('dialog');
         const resizer: any = document.createElement('div');
 
@@ -85,7 +85,7 @@ const DialogDraggableDevice = () => {
         element.appendChild(resizer);
         resizer.addEventListener('mousedown', initResize, false);
 
-        function initResize(e: any) {
+        function initResize() {
             window.addEventListener('mousemove', Resize, false);
             window.addEventListener('mouseup', stopResize, false);
         }
@@ -105,7 +105,7 @@ const DialogDraggableDevice = () => {
             }
         }
 
-        function stopResize(e: any) {
+        function stopResize() {
             window.removeEventListener('mousemove', Resize, false);
             window.removeEventListener('mouseup', stopResize, false);
         }
