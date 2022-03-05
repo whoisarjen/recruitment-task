@@ -31,7 +31,7 @@ const Box = styled.div`
     display: none;
 `
 
-const DialogDraggableDevice = () => {
+const DialogDevice = () => {
     const dispatch = useAppDispatch()
     const dialog = useAppSelector(state => state.device.dialog)
     const [isFirstFullLoad, setIsFirstFullLoad] = useState(true);
@@ -139,4 +139,4 @@ const DialogDraggableDevice = () => {
     )
 }
 
-export default DialogDraggableDevice;
+export default DialogDevice;
