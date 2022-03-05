@@ -53,12 +53,11 @@ const DialogDraggableDevice = () => {
 
         if (dialog) {
             element.style.display = `block`
+            if (element.offsetHeight < dialogReal.offsetHeight + 20) {
+                element.style.height = dialogReal.offsetHeight + 20 + 'px';
+            }
         } else {
             element.style.display = `none`
-        }
-
-        if (element.offsetHeight < dialogReal.offsetHeight + 20) {
-            element.style.height = dialogReal.offsetHeight + 20 + 'px';
         }
 
         // it has to be after display change (center dialog when max-width plays first role)
