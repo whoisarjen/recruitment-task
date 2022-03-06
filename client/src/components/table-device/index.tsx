@@ -7,14 +7,16 @@ const Table = styled.table`
 const TableDevice = (props: object) => {
     return (
         <Table>
-            {
-                Object.keys(props).map(key =>
-                    <tr>
-                        <td>{key}:</td>
-                        <td>{props[key as keyof object]}</td>
-                    </tr>
-                )
-            }
+            <tbody>
+                {
+                    Object.keys(props).map(key =>
+                        <tr key={key}>
+                            <td>{key}:</td>
+                            <td>{props[key as keyof object]}</td>
+                        </tr>
+                    )
+                }
+            </tbody>
         </Table>
     )
 }

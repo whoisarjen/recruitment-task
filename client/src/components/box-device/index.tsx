@@ -15,7 +15,6 @@ const Box = styled.div`
     border-radius: 8px;
     transition: box-shadow 0.3s ease-in-out;
     min-height: 88px;
-    overflow-wrap: anywhere;
     &:hover{
         cursor: pointer;
         box-shadow: 0 5px 15px rgba(0,0,0,0.3);
