@@ -23,7 +23,6 @@ const Box = styled.div`
     transform: translate(-50%,-50%);
     width: ${width}px;
     max-width: 90%;
-    min-width: 300px;
     min-height: ${height}px;
     background: #fff;
     border-radius: 8px;
