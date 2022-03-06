@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react';
 import Draggable from 'react-draggable';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
-import { SmartDeviceDetails } from '../../interfaces/device.interface';
 import { closeDialog } from '../../redux/slices/device.slice';
 import Fade from '@mui/material/Fade';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import DialogDeviceBulb from '../dialog-device-bulb';
+import DialogDeviceOutlet from '../dialog-device-outlet';
+import DialogDeviceTemperatureSensor from '../dialog-device-temperature-sensor';
+import DialogDeviceUknown from '../dialog-device-unknown';
 
 const width = 350;
 const height = 200;
@@ -22,13 +23,14 @@ const Box = styled.div`
     transform: translate(-50%,-50%);
     width: ${width}px;
     max-width: 90%;
+    min-width: 300px;
     min-height: ${height}px;
     background: #fff;
     border-radius: 8px;
-    padding: 10px;
     box-shadow: rgb(0 0 0 / 20%) 0px 11px 15px -7px, rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px;
     cursor: pointer;
     display: none;
+    overflow-wrap: break-word;
 `
 
 const DialogDevice = () => {
@@ -53,8 +55,8 @@ const DialogDevice = () => {
 
         if (dialog) {
             element.style.display = `block`
-            if (element.offsetHeight < dialogReal.offsetHeight + 20) {
-                element.style.height = dialogReal.offsetHeight + 20 + 'px';
+            if (element.offsetHeight < dialogReal.offsetHeight + 10) {
+                element.style.height = dialogReal.offsetHeight + 10 + 'px';
             }
         } else {
             element.style.display = `none`
@@ -97,10 +99,10 @@ const DialogDevice = () => {
                 element.style.width = (e.clientX - element.offsetLeft - x) + 'px';
             }
 
-            if (dialogReal.offsetHeight + 20 <= (e.clientY - element.offsetTop - y)) {
+            if (dialogReal.offsetHeight + 10 <= (e.clientY - element.offsetTop - y)) {
                 element.style.height = (e.clientY - element.offsetTop - y) + 'px';
             } else {
-                element.style.height = dialogReal.offsetHeight + 20 + 'px';
+                element.style.height = dialogReal.offsetHeight + 10 + 'px';
             }
         }
 
@@ -117,15 +119,14 @@ const DialogDevice = () => {
             <Fade in={dialog ? true : false}>
                 <Box id="dialog">
                     <div id="dialogReal">
-                        <DialogTitle id="dialog-title">
-                            {dialog && dialog.name}
-                        </DialogTitle>
-                        <DialogContent>
+                        <DialogContent id="dialogReal">
                             {
-                                dialog && Object.keys(dialog).map((key: any) =>
-                                    <DialogContentText key={key}>
-                                        {key}: {dialog[key as keyof SmartDeviceDetails].toString()}
-                                    </DialogContentText>
+                                dialog &&
+                                (
+                                    dialog.type === 'bulb' ? <DialogDeviceBulb {...dialog} /> :
+                                        dialog.type === 'outlet' ? <DialogDeviceOutlet {...dialog} /> :
+                                            dialog.type === 'temperatureSensor' ? <DialogDeviceTemperatureSensor {...dialog} /> :
+                                                <DialogDeviceUknown {...dialog} />
                                 )
                             }
                         </DialogContent>
