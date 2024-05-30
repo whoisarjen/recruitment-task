@@ -1,43 +1,87 @@
+# 🏡 Smart Home Web Interface
+
 ![Layout of application](./layout.png)
 
-The goal of the project is to create part of smart home web's interface, which cover:
+## 📋 Project Overview
 
-- [x] Connect to DB and get all user's devices
-- [x] Connect socket on specific path and wait for messages
-- [x] Show list of user's devices with basic information (name, type, range)
-- [x] Dialog, which open, when user click on device. The box should be draggable and allow resizing (right bottom corner). After close holds the same position
-- [x] Dynamically update list with value from socket (and potentially dialog)
+This project aims to develop a part of a smart home web interface with the following features:
 
-## How does it work?
+- ✅ **Connect to Database:** Retrieve all user's devices.
+- ✅ **WebSocket Connection:** Establish a WebSocket connection to a specific path and wait for messages.
+- ✅ **Device List Display:** Show a list of user's devices with basic information (name, type, range).
+- ✅ **Interactive Dialog:** Implement a draggable and resizable dialog box that opens when a device is clicked. The dialog retains its position after being closed.
+- ✅ **Dynamic Updates:** Dynamically update the list with values from the WebSocket (and potentially the dialog).
 
-After connection to the site, application is downloading devices and holds it in global store. After receiving a message from socket, it checks Redux to overwrite an existing value or add it to the array of devices. Dialog which is located higher in root, observes a special flag in global store, which can be equal to specific object (device) or false. If the value is there, dialog is opening and showing every property. To avoid changing position after close, the dialog only change his visibility (is not getting re-render).
+## 🛠️ How It Works
 
-## Starting project
+Upon connecting to the site, the application downloads the devices and stores them in a global store. When a message is received from the WebSocket, Redux is used to:
 
-To run the project, we have to take care of server's and client's site.
+- **Update** the existing device information.
+- **Add** new devices to the array if they are not already present.
 
-Inside "_server" we need to install all dependencies:
+The dialog component, located higher in the component hierarchy, observes a special flag in the global store. This flag can be set to a specific device object or `false`. If the flag is set to a device:
 
-```bash
-$ npm install
-```
+- The dialog opens and displays the device's properties.
+- To maintain its position after closing, the dialog's visibility is toggled without re-rendering.
 
-then we can run server:
+## 🚀 Getting Started
 
-```bash
-$ npm run start
-```
+### Prerequisites
 
-Now we can move to "client" folder and basically do the same:
+Make sure you have the following installed on your machine:
 
-```bash
-$ npm install
-```
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [npm](https://www.npmjs.com/)
 
-Client's site should be ready to start:
+### Installation
 
-```bash
-$ npm run start
-```
+#### 📡 Server Setup
 
-After everything, React should open a browser with "localhost:3000". The server uses "localhost:1337".
+1. Navigate to the `_server` directory:
+   ```bash
+   cd _server
+   ```
+2. Install the server dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the server:
+   ```bash
+   npm run start
+   ```
+
+The server will run on `localhost:1337`.
+
+#### 💻 Client Setup
+
+1. Navigate to the `client` directory:
+   ```bash
+   cd ../client
+   ```
+2. Install the client dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the client:
+   ```bash
+   npm run start
+   ```
+
+The client will run on `localhost:3000`, and a browser should automatically open this address.
+
+## 🧭 Navigation and Usage
+
+Once both the server and client are running:
+
+1. **Access the Interface:** Open your web browser and go to `http://localhost:3000`.
+2. **View Devices:** The application will automatically fetch and display a list of your devices.
+3. **Interact with Devices:** Click on any device to open the interactive dialog. You can drag and resize this dialog. Its position and size will be retained even after you close and reopen it.
+4. **Real-Time Updates:** Any updates received via the WebSocket connection will dynamically update the device list and dialog.
+
+## 🤝 Contributions
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](#).
+
+## 📄 License
+
+This project is licensed under the MIT License.
